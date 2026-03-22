@@ -1,0 +1,22 @@
+<div class="card">
+  <h2>Real-time Community Plans</h2>
+  <p>Progress updates automatically every few seconds.</p>
+  <div class="plans-grid">
+    <div *ngFor="let plan of plans" class="plan-card">
+      <div class="plan-header">
+        <h3>{{ plan.name }}</h3>
+        <span class="progress-text">{{ plan.progress }}% complete</span>
+      </div>
+      <p>{{ plan.description }}</p>
+      <div class="progress-container">
+        <div class="progress-bar" [style.width.%]="plan.progress"></div>
+      </div>
+      <div class="plan-footer">
+        <small
+          >Status:
+          {{ plan.progress >= 100 ? "Completed" : "In Progress" }}</small
+        >
+      </div>
+    </div>
+  </div>
+</div>

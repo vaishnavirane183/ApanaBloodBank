@@ -1,0 +1,148 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>ApanaBloodBank - India Blood Donation Network</h1>
+    <p>
+      Trusted portal for donors, blood banks, and hospitals. Manage requests,
+      stocks and campaigns from one dashboard.
+    </p>
+    <div class="hero-buttons">
+      <a class="btn" *ngIf="!auth.isAuthenticated()" routerLink="/signup"
+        >Register as Donor</a
+      >
+      <a
+        class="btn btn-secondary"
+        *ngIf="!auth.isAuthenticated()"
+        routerLink="/login"
+        >Login</a
+      >
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="logo-container">
+      <div class="logo-circle">
+        <div class="logo-icon">🩸</div>
+      </div>
+      <div class="logo-text">ApanaBloodBank</div>
+      <div class="logo-subtitle">India's Trusted Blood Donation Network</div>
+    </div>
+  </div>
+</section>
+
+<!-- Slider -->
+<app-slider></app-slider>
+
+<section class="section blood-types-needed">
+  <h2>Blood Types Needed</h2>
+  <p>
+    Many variables impact our blood inventories. Every day, patients need blood
+    and you can help by donating. Less than 10% of the population gives blood.
+  </p>
+  <div class="blood-types-grid">
+    <div class="blood-type critical">O+</div>
+    <div class="blood-type critical">O-</div>
+    <div class="blood-type">A+</div>
+    <div class="blood-type">A-</div>
+    <div class="blood-type">B+</div>
+    <div class="blood-type">B-</div>
+    <div class="blood-type">AB+</div>
+    <div class="blood-type">AB-</div>
+  </div>
+  <a class="btn" routerLink="/donors">Book an Appointment</a>
+</section>
+
+<section class="section statistics">
+  <div class="grid">
+    <div class="stat-card">
+      <h3>{{ totalDonors || 25000 }}</h3>
+      <p>Registered Donors</p>
+    </div>
+    <div class="stat-card">
+      <h3>{{ totalBloodUnits || 10000 }}</h3>
+      <p>Units Available</p>
+    </div>
+    <div class="stat-card">
+      <h3>1400+</h3>
+      <p>Blood Banks Connected</p>
+    </div>
+  </div>
+</section>
+
+<section class="section stories">
+  <h2>Donor Stories 💖</h2>
+  <div class="story-card">
+    <h3>Shyneeta's Story 🩸</h3>
+    <p>
+      On behalf of them, thank you for giving blood! ❤️ Your donation saved
+      lives. Your kindness made a real difference! 🙏
+    </p>
+    <a routerLink="/donors">See All Stories 📖</a>
+  </div>
+</section>
+
+<section class="section services">
+  <h2>Services</h2>
+  <div class="grid">
+    <div class="feature-card">
+      <h4>Find Donor</h4>
+      <p>Search donors by blood group, city, and distance.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Stock Tracker</h4>
+      <p>Live bloodbank stock and minimum stock alerts.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Emergency Request</h4>
+      <p>Create and handle urgent blood requirement notices.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Campaigns</h4>
+      <p>Track donation drives, plan progress, and achievements.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section policy">
+  <h2>Safety & Donation Tips</h2>
+  <ul>
+    <li>Ensure you are eligible before donation.</li>
+    <li>Carry valid ID and medical history.</li>
+    <li>Stay hydrated and rest after donation.</li>
+  </ul>
+</section>
+
+<section class="section quick">
+  <h2>Quick Links</h2>
+  <div class="link-grid">
+    <a routerLink="/donors">Search Donors</a>
+    <a routerLink="/bloodstocks">Check Bloodstock</a>
+    <a routerLink="/plans">Active Plans</a>
+    <a routerLink="/profile">My Profile</a>
+  </div>
+</section>
+
+<section class="section cta">
+  <h2>Change the World with Us</h2>
+  <p>Schedule your donation appointment now.</p>
+  <div class="cta-buttons">
+    <a class="btn" href="tel:1-800-747-5401">Call 1-800-747-5401</a>
+    <a class="btn btn-secondary" routerLink="/signup">Schedule Online</a>
+    <a class="btn btn-secondary" routerLink="/donors">Find a Location</a>
+  </div>
+</section>
+
+<ng-container *ngIf="auth.isAuthenticated()">
+  <section class="section dashboard">
+    <h2>Dashboard</h2>
+    <div class="grid">
+      <div class="stat-card">
+        <h4>Total Registered Donors</h4>
+        <p>{{ totalDonors }}</p>
+      </div>
+      <div class="stat-card">
+        <h4>Available Blood Units</h4>
+        <p>{{ totalBloodUnits }}</p>
+      </div>
+    </div>
+  </section>
+</ng-container>

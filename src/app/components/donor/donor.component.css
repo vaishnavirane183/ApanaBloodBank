@@ -1,0 +1,185 @@
+:root {
+  --primary: #d32f2f;
+}
+
+/* Layout */
+.container-main {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 2rem;
+  max-width: 1300px;
+  margin: auto;
+  padding: 1rem;
+}
+
+/* FORM */
+.form-card {
+  background: #fff;
+  padding: 1.8rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.form-card h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* Buttons */
+.btn {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn.secondary {
+  background: #eee;
+}
+
+.btn.success {
+  background: #4caf50;
+  color: white;
+}
+
+.btn.danger {
+  background: #ff5252;
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Donor Row (Compact Horizontal) */
+.donor-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: 0.2s;
+}
+
+.donor-row:hover {
+  transform: translateY(-2px);
+}
+
+/* Left */
+.left {
+  flex: 2;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.meta {
+  font-size: 0.8rem;
+  color: #777;
+  display: flex;
+  gap: 10px;
+  margin-top: 3px;
+}
+
+/* Center */
+.center {
+  flex: 1;
+  text-align: center;
+}
+
+.badge {
+  background: var(--primary);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+/* Right */
+.right {
+  flex: 2;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 6px 10px;
+  border: none;
+  background: #eee;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: var(--primary);
+  color: white;
+}
+
+.pagination button:hover {
+  background: #ddd;
+}
+
+/* Empty */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container-main {
+    grid-template-columns: 1fr;
+  }
+
+  .donor-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

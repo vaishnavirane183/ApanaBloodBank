@@ -1,0 +1,46 @@
+<div class="slider-container">
+  <div class="slider-wrapper">
+    <div
+      class="slides-track"
+      [style.transform]="'translateX(-' + currentSlide * 100 + '%)'"
+    >
+      <div
+        class="slide"
+        *ngFor="let slide of slides"
+        [style.backgroundColor]="slide.bgColor"
+      >
+        <div class="slide-content">
+          <h2>{{ slide.title }}</h2>
+          <p>{{ slide.description }}</p>
+        </div>
+        <div class="slide-logo">{{ slide.logo }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button
+    class="slider-nav slider-nav-prev"
+    (click)="prevSlide()"
+    aria-label="Previous slide"
+  >
+    ❮
+  </button>
+  <button
+    class="slider-nav slider-nav-next"
+    (click)="nextSlide()"
+    aria-label="Next slide"
+  >
+    ❯
+  </button>
+
+  <!-- Dots -->
+  <div class="slider-dots">
+    <button
+      *ngFor="let slide of slides; let i = index"
+      [class.active]="i === currentSlide"
+      (click)="goToSlide(i)"
+      [attr.aria-label]="'Go to slide ' + (i + 1)"
+    ></button>
+  </div>
+</div>

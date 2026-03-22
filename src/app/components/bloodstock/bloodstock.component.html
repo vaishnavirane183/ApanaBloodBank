@@ -1,0 +1,126 @@
+<div class="container-main" [class.admin-view]="auth.isAdmin()">
+  <!-- Form Section -->
+  <div class="form-section" *ngIf="auth.isAdmin()">
+    <div class="form-card">
+      <h2>Add Blood Stock</h2>
+      <form [formGroup]="stockForm" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label>Blood Group</label>
+          <select formControlName="bloodGroup">
+            <option value="">Select Blood Group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Quantity (units)</label>
+          <input
+            type="number"
+            formControlName="quantity"
+            min="1"
+            placeholder="Enter units"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Location</label>
+          <input
+            type="text"
+            formControlName="location"
+            placeholder="Hospital/Bank"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Updated At</label>
+          <input type="date" formControlName="updatedAt" />
+        </div>
+
+        <div class="form-buttons">
+          <button class="btn" type="submit">
+            {{ selected ? "Update" : "Add" }} Stock
+          </button>
+          <button
+            class="btn btn-secondary"
+            type="button"
+            *ngIf="selected"
+            (click)="cancelEdit()"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+      <p *ngIf="feedback" class="feedback-message">{{ feedback }}</p>
+    </div>
+  </div>
+
+  <!-- Cards Section -->
+  <div class="cards-section">
+    <div class="section-header">
+      <h2>Blood Stock Inventory</h2>
+      <p class="stock-count" *ngIf="auth.isAdmin()">
+        Total: {{ stocks.length }} entries
+      </p>
+      <p class="stock-count" *ngIf="!auth.isAdmin()">
+        Viewing {{ stocks.length }} blood stock entries
+      </p>
+    </div>
+
+    <div class="stocks-grid" *ngIf="stocks.length > 0; else noStocks">
+      <div class="stock-card" *ngFor="let stock of stocks">
+        <div class="card-header">
+          <h3>{{ stock.bloodGroup }}</h3>
+          <span class="quantity-badge">{{ stock.quantity }} units</span>
+        </div>
+        <div class="card-body">
+          <div class="info-row">
+            <span class="label">Location:</span>
+            <span class="value">{{ stock.location }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Updated:</span>
+            <span class="value">{{ stock.updatedAt }}</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button
+            class="btn btn-sm btn-warning"
+            type="button"
+            (click)="useBlood(stock)"
+            *ngIf="auth.isAdmin()"
+          >
+            Use Blood
+          </button>
+          <button
+            class="btn btn-sm"
+            type="button"
+            (click)="edit(stock)"
+            *ngIf="auth.isAdmin()"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            type="button"
+            (click)="delete(stock.id)"
+            *ngIf="auth.isAdmin()"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noStocks>
+      <div class="empty-state">
+        <p>No blood stocks recorded. Add blood stock above!</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

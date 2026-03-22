@@ -1,0 +1,117 @@
+<div class="container-main">
+  <!-- Form Section -->
+  <div class="form-section">
+    <div class="form-card">
+      <h2>Add New Donor</h2>
+
+      <form [formGroup]="donorForm" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" formControlName="name" placeholder="Enter donor name" />
+        </div>
+
+        <div class="form-group">
+          <label>Blood Group</label>
+          <select formControlName="bloodGroup">
+            <option value="">Select Blood Group</option>
+            <option *ngFor="let bg of ['A+','A-','B+','B-','O+','O-','AB+','AB-']" [value]="bg">
+              {{ bg }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Age</label>
+          <input type="number" formControlName="age" min="18" />
+        </div>
+
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" formControlName="location" />
+        </div>
+
+        <div class="form-group">
+          <label>Last Donation</label>
+          <input type="date" formControlName="lastDonation" />
+        </div>
+
+        <div class="form-buttons">
+          <button class="btn primary" type="submit">
+            {{ selected ? "Update" : "Add" }} Donor
+          </button>
+
+          <button class="btn secondary" type="button" (click)="cancelEdit()" *ngIf="selected">
+            Cancel
+          </button>
+        </div>
+      </form>
+
+      <p *ngIf="feedback" class="feedback-message">{{ feedback }}</p>
+    </div>
+  </div>
+
+  <!-- Donor List -->
+  <div class="cards-section">
+    <div class="section-header">
+      <h2>Registered Donors</h2>
+      <p>Total: {{ donors.length }}</p>
+    </div>
+
+    <div *ngIf="donors.length > 0; else noDonors">
+
+      <!-- Compact Rows -->
+      <div class="donor-row" *ngFor="let donor of paginatedDonors">
+
+        <!-- Left -->
+        <div class="left">
+          <div class="name">{{ donor.name }}</div>
+          <div class="meta">
+            <span>{{ donor.age }} yrs</span>
+            <span>{{ donor.location }}</span>
+            <span>{{ donor.lastDonation }}</span>
+          </div>
+        </div>
+
+        <!-- Center -->
+        <div class="center">
+          <span class="badge">{{ donor.bloodGroup }}</span>
+        </div>
+
+        <!-- Right -->
+        <div class="right">
+          <button class="btn success" (click)="donate(donor)">Donate</button>
+
+          <button class="btn" (click)="edit(donor)" *ngIf="auth.isAdmin()">Edit</button>
+
+          <button class="btn danger" (click)="delete(donor.id)" *ngIf="auth.isAdmin()">Delete</button>
+        </div>
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" *ngIf="totalPages > 1">
+
+        <button (click)="goToPage(1)" [disabled]="currentPage === 1">«</button>
+        <button (click)="previousPage()" [disabled]="currentPage === 1">‹</button>
+
+        <button
+          *ngFor="let p of pageNumbers"
+          [class.active]="p === currentPage"
+          (click)="goToPage(p)"
+        >
+          {{ p }}
+        </button>
+
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">›</button>
+        <button (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages">»</button>
+
+      </div>
+    </div>
+
+    <ng-template #noDonors>
+      <div class="empty-state">
+        No donors found. Add one 👆
+      </div>
+    </ng-template>
+  </div>
+</div>

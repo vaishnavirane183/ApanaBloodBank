@@ -1,0 +1,85 @@
+<div class="card">
+  <h2>Profile</h2>
+  <p *ngIf="!auth.isAuthenticated()">Please login to access your profile.</p>
+  <div *ngIf="auth.isAuthenticated()">
+    <div *ngIf="!editMode" class="profile-view">
+      <div class="profile-header">
+        <span class="profile-emoji">🩸</span>
+        <div class="profile-info">
+          <h3>{{ auth.currentUser?.name }}</h3>
+          <p><strong>Email:</strong> {{ auth.currentUser?.email }}</p>
+          <p><strong>Role:</strong> {{ auth.currentUser?.role }}</p>
+          <p *ngIf="auth.currentUser?.age">
+            <strong>Age:</strong> {{ auth.currentUser?.age }}
+          </p>
+          <p *ngIf="auth.currentUser?.location">
+            <strong>Location:</strong> {{ auth.currentUser?.location }}
+          </p>
+          <p *ngIf="auth.currentUser?.bloodGroup">
+            <strong>Blood Group:</strong> {{ auth.currentUser?.bloodGroup }}
+          </p>
+          <p *ngIf="auth.currentUser?.phone">
+            <strong>Phone:</strong> {{ auth.currentUser?.phone }}
+          </p>
+          <p *ngIf="auth.currentUser?.lastDonation">
+            <strong>Last Donation:</strong> {{ auth.currentUser?.lastDonation }}
+          </p>
+        </div>
+      </div>
+      <button class="btn" (click)="toggleEdit()">Edit Profile</button>
+    </div>
+
+    <form *ngIf="editMode" [formGroup]="profileForm" (ngSubmit)="save()">
+      <div class="form-grid">
+        <div>
+          <label>Name</label>
+          <input type="text" formControlName="name" />
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" formControlName="email" />
+        </div>
+        <div>
+          <label>Age</label>
+          <input type="number" formControlName="age" />
+        </div>
+        <div>
+          <label>Location</label>
+          <input type="text" formControlName="location" />
+        </div>
+        <div>
+          <label>Blood Group</label>
+          <select formControlName="bloodGroup">
+            <option value="">Select</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+          </select>
+        </div>
+        <div>
+          <label>Phone</label>
+          <input type="tel" formControlName="phone" />
+        </div>
+        <div>
+          <label>Last Donation Date</label>
+          <input type="date" formControlName="lastDonation" />
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="password" formControlName="password" />
+        </div>
+      </div>
+      <button class="btn" type="submit">Save</button>
+      <button class="btn btn-secondary" type="button" (click)="toggleEdit()">
+        Cancel
+      </button>
+    </form>
+
+    <p *ngIf="message" class="message">{{ message }}</p>
+  </div>
+</div>

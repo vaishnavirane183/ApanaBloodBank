@@ -1,0 +1,159 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "admin",
+      "email": "admin@bloodbank.com",
+      "password": "Pass@123",
+      "role": "admin"
+    },
+    {
+      "name": "Gaurav",
+      "email": "gauravrane@gmail.com",
+      "password": "Gaurav@123",
+      "role": "user",
+      "id": 2
+    },
+    {
+      "name": "Vaishnavi",
+      "email": "Vaishnavi@gmail.com",
+      "password": "Pass@123",
+      "role": "user",
+      "id": 3
+    }
+  ],
+  "plans": [
+    {
+      "id": 1,
+      "name": "Donor Registration",
+      "description": "Register voluntary blood donors across the region",
+      "progress": 75
+    },
+    {
+      "id": 2,
+      "name": "Blood Stock Management",
+      "description": "Maintain optimal blood unit inventory",
+      "progress": 85
+    },
+    {
+      "id": 3,
+      "name": "Emergency Response",
+      "description": "24/7 emergency blood transfusion services",
+      "progress": 90
+    },
+    {
+      "id": 4,
+      "name": "Awareness Campaign",
+      "description": "Community education on blood donation benefits",
+      "progress": 65
+    },
+    {
+      "id": 5,
+      "name": "Donor Retention",
+      "description": "Keep registered donors engaged and active",
+      "progress": 55
+    },
+    {
+      "id": 6,
+      "name": "Hospital Integration",
+      "description": "Connect with healthcare centers and hospitals",
+      "progress": 70
+    }
+  ],
+  "donors": [
+    {
+      "name": "you@gmail.com",
+      "bloodGroup": "A+",
+      "age": 18,
+      "location": "you@gmail.com",
+      "lastDonation": "2026-03-22",
+      "id": 2
+    },
+    {
+      "name": "Santosh ",
+      "bloodGroup": "O+",
+      "age": 44,
+      "location": "Nandura",
+      "lastDonation": "2026-03-21",
+      "id": 3
+    },
+    {
+      "name": "Gopal",
+      "bloodGroup": "A-",
+      "age": 55,
+      "location": "Akola",
+      "lastDonation": "2026-03-21",
+      "id": 4
+    },
+    {
+      "name": "wefrg",
+      "bloodGroup": "A+",
+      "age": 18,
+      "location": "erfg",
+      "lastDonation": "2026-04-01",
+      "id": 5
+    },
+    {
+      "name": "vhjvjh",
+      "bloodGroup": "B+",
+      "age": 18,
+      "location": "Nandura",
+      "lastDonation": "2026-03-26",
+      "id": 6
+    },
+    {
+      "name": "Gaurav",
+      "bloodGroup": "B+",
+      "age": 18,
+      "location": "Nandura",
+      "lastDonation": "2026-03-22",
+      "id": 7
+    },
+    {
+      "name": "Saurav",
+      "bloodGroup": "AB+",
+      "age": 18,
+      "location": "Malkapur",
+      "lastDonation": "2026-03-27",
+      "id": 8
+    },
+    {
+      "name": "Manoj",
+      "bloodGroup": "AB+",
+      "age": 55,
+      "location": "Nandura",
+      "lastDonation": "2026-04-02",
+      "id": 9
+    }
+  ],
+  "bloodstocks": [
+    {
+      "bloodGroup": "A-",
+      "quantity": 2,
+      "location": "qwer",
+      "updatedAt": "2026-03-21",
+      "id": 4
+    },
+    {
+      "bloodGroup": "A+",
+      "quantity": 9,
+      "location": "ghjk",
+      "updatedAt": "2026-03-22",
+      "id": 5
+    },
+    {
+      "bloodGroup": "A+",
+      "quantity": 1,
+      "location": "you@gmail.com",
+      "updatedAt": "2026-03-22",
+      "id": 6
+    },
+    {
+      "bloodGroup": "O+",
+      "quantity": 1,
+      "location": "Nandura",
+      "updatedAt": "2026-03-21",
+      "id": 7
+    }
+  ]
+}

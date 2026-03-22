@@ -1,0 +1,25 @@
+<nav class="nav">
+  <div class="brand">
+    <strong>ApanaBloodBank</strong>
+    <small>Trusted National Voluntary Blood Service</small>
+  </div>
+
+  <div class="nav-links">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <ng-container *ngIf="auth.isAuthenticated(); else guestLinks">
+      <a routerLink="/plans" routerLinkActive="active">Plans</a>
+      <a routerLink="/donors" routerLinkActive="active">Donors</a>
+      <a routerLink="/bloodstocks" routerLinkActive="active">Bloodstock</a>
+      <a routerLink="/profile" routerLinkActive="active">Profile</a>
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    </ng-container>
+    <ng-template #guestLinks>
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+      <a routerLink="/signup" routerLinkActive="active">Signup</a>
+    </ng-template>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
